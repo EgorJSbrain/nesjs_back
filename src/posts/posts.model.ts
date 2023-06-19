@@ -3,10 +3,10 @@ import { Column, DataType, Model, Table, BelongsTo, ForeignKey } from 'sequelize
 import { User } from 'src/users/users.model'
 
 interface PostCreationAttrs {
-  title: string
-  contnet: string
-  userId: number
-  image: string
+  title: string;
+  content: string;
+  userId: number;
+  image: string;
 }
 
 @Table({ tableName: 'posts' })
@@ -20,7 +20,7 @@ export class Post extends Model <Post, PostCreationAttrs> {
   title: string
 
   @ApiProperty({ example: 'some text', description: 'hot news' })
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: true })
   content: string
 
   @Column({ type: DataType.STRING, allowNull: false })

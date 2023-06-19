@@ -1,6 +1,8 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
+import { ServeStaticModule } from "@nestjs/serve-static";
 import { SequelizeModule } from "@nestjs/sequelize";
+import * as path from "path";
 
 import { UsersModule } from './users/users.module';
 import { User } from "./users/users.model";
@@ -16,6 +18,9 @@ import { FilesModule } from './files/files.module';
   controllers: [],
   providers: [],
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: path.join(__dirname, 'static'),
+    }),
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`
     }),

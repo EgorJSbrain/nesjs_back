@@ -13,10 +13,8 @@ export class PostsService {
   ) {}
 
   async create(dto: CreatPostDto, image: any) {
-    console.log("---------dto:", dto)
     const fileName = await this.fileService.createFile(image)
     const post = await this.postRepository.create({ ...dto, image: fileName })
-    console.log("!!!!!!!!!", post)
 
     return post
   }
